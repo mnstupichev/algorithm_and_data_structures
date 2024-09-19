@@ -1,3 +1,6 @@
+from time import perf_counter
+
+
 def fib(n):
     if n <= 1:
         return n
@@ -7,6 +10,8 @@ def fib(n):
     return b % 10
 
 
+start_time = perf_counter()
+
 with open("C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab0/task4/tests/input", "r") as input_file:
     data = input_file.readline()
 n = int(data)
@@ -14,4 +19,5 @@ n = int(data)
 result = fib(n)
 
 with open("C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab0/task4/tests/output", "w") as output_file:
-    output_file.write(str(result))
+    output_file.write(str(result) + "\n")
+    output_file.write(str(perf_counter() - start_time))
