@@ -1,8 +1,8 @@
 # Практика по Алгоритмам и Cтруктурам Данных ИТМО
 
-Студент ИТМО, Колпаков Артем Сергеевич 466237
+Студент ИТМО, Ступичев Михаил Николаевич 467614
 
-## Вариант 12
+## Вариант 21
 
 ### Навигация
 
@@ -31,11 +31,11 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/Brondee/alg-labs.git
+   git clone https://github.com/mnstupichev/algoritm_and_data_structures.git
    ```
 2. Перейдите в папку с проектом:
    ```bash
-   cd alg-labs
+   cd algoritm_and_data_structures
    ```
 3. **Запуску всех лабораторных**
 
