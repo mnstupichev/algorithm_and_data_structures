@@ -1,4 +1,9 @@
+from utils import read, write
+
+
 def multiply_polynomials(a, b):
+    if len(a) == 0:
+        return []
     n = len(a)
     if n == 1:
         return [a[0] * b[0]]
@@ -47,12 +52,13 @@ def subtract_polynomials(a, b):
     return res
 
 
-with open('/lab2/task8/textf/input', 'r') as f:
-    n = int(f.readline())
-    koef_first_polynomial = list(map(int, f.readline().split()))
-    koef_second_polynomial = list(map(int, f.readline().split()))
+def main():
+    first_koefs, second_koefs, = read()
+    koef_first_polynomial = list(map(int, first_koefs))
+    koef_second_polynomial = list(map(int, second_koefs))
+    result = multiply_polynomials(koef_first_polynomial, koef_second_polynomial)
+    write(*result)
 
-ans = multiply_polynomials(koef_first_polynomial, koef_second_polynomial)
 
-with open('/lab2/task8/textf/output', 'w') as f:
-    f.write(' '.join(map(str, ans)))
+if __name__ == "__main__":
+    main()

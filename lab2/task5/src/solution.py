@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def majority_element(arr):
     if not arr:
         return None
@@ -22,15 +25,16 @@ def majority_element(arr):
         return None
 
 
-with open('/lab2/task5/textf/input', 'r') as f:
-    n = int(f.readline())
-    arr = list(map(int, f.readline().split()))
+def main():
+    array, = read()
+    majority = majority_element(array)
+    if majority is not None:
+        majority = 1
+    else:
+        majority = 0
+    write(majority)
 
-ans = None
-if majority_element(arr) is not None:
-    ans = 1
-else:
-    ans = 0
 
-with open('/lab2/task5/textf/output', 'w') as f:
-    f.write(str(ans))
+if __name__ == "__main__":
+    main()
+

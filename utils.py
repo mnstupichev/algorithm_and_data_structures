@@ -23,8 +23,8 @@ def read(filename: str = r'..\textf\input', type_convert: type = int):
     with open(filename) as file:
         while True:
             line = file.readline().split()
-            if not line: break
-
+            if not line:
+                break
             if type_convert != str:
                 line = list(map(type_convert, line))
 

@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -10,6 +13,7 @@ def merge_sort(arr):
     right_half = merge_sort(right_half)
 
     return merge(left_half, right_half)
+
 
 def merge(left, right):
     merged = []
@@ -28,11 +32,11 @@ def merge(left, right):
     return merged
 
 
-with open('/lab2/task1/textf/input', 'r') as f:
-    n = int(f.readline())
-    arr = list(map(int, f.readline().split()))
+def main():
+    array, = read()
+    merged_array = merge_sort(array)
+    write(*merged_array)
 
-sorted_arr = merge_sort(arr)
 
-with open('/lab2/task1/textf/output', 'w') as f:
-    f.write(' '.join(map(str, sorted_arr)))
+if __name__ == "__main__":
+    main()
