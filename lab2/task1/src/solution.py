@@ -28,11 +28,11 @@ def merge(left, right):
     return merged
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task1/tests/input', 'r') as f:
+with open('/lab2/task1/textf/input', 'r') as f:
     n = int(f.readline())
     arr = list(map(int, f.readline().split()))
 
 sorted_arr = merge_sort(arr)
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task1/tests/output', 'w') as f:
+with open('/lab2/task1/textf/output', 'w') as f:
     f.write(' '.join(map(str, sorted_arr)))

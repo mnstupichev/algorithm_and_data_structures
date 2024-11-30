@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def get_pallindrom(string):
     letters = set([let for let in string])
     count_letters = dict()
@@ -27,11 +30,12 @@ def get_pallindrom(string):
     return first_part + middle_letter + second_part
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task10/tests/input', 'r') as f:
-    n = int(f.readline())
-    string = f.readline().strip()
+def main():
+    string, = read(type_convert=str)
+    string = string[0]
+    string = get_pallindrom(string)
+    write(*string, sep="")
 
-string = get_pallindrom(string)
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task10/tests/output', 'w') as f:
-    f.write(string)
+if __name__ == "__main__":
+    main()

@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def bubble_sort(data):
     n = len(data)
     for i in range(n - 1):
@@ -6,11 +9,11 @@ def bubble_sort(data):
                 data[j], data[j + 1] = data[j + 1], data[j]
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task6/tests/input', 'r') as f:
-    n = int(f.readline())
-    arr = list(map(int, f.readline().split()))
+def main():
+    array, = read()
+    bubble_sort(array)
+    write(*array)
 
-bubble_sort(arr)
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task6/tests/output', 'w') as f:
-    f.write(' '.join(map(str, arr)))
+if __name__ == "__main__":
+    main()

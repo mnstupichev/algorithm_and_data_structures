@@ -47,12 +47,12 @@ def subtract_polynomials(a, b):
     return res
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task8/tests/input', 'r') as f:
+with open('/lab2/task8/textf/input', 'r') as f:
     n = int(f.readline())
     koef_first_polynomial = list(map(int, f.readline().split()))
     koef_second_polynomial = list(map(int, f.readline().split()))
 
 ans = multiply_polynomials(koef_first_polynomial, koef_second_polynomial)
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task8/tests/output', 'w') as f:
+with open('/lab2/task8/textf/output', 'w') as f:
     f.write(' '.join(map(str, ans)))

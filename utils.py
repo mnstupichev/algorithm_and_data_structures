@@ -1,44 +1,113 @@
-def write_file(file_path, data):
-    f2 = open(file_path, 'w')
-    if not isinstance(data, list) and str(abs(data)).isdigit():
-        f2.write(str(data))
-    elif '\n' in data[0]:
-        f2.write(("").join(list(map(str, data))))
-    else:
-        f2.write((" ").join(list(map(str, data))))
-
-    f2.close()
+from typing import Tuple
+from inspect import stack
+import tracemalloc
+import time
+import os
+import subprocess
 
 
-def read_data(file_path: str):
-    file = open(file_path, 'r')
-    lines = file.readlines()
-    data = []
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-
-        if len(line.split()) == 1:
-            try:
-                data.append(int(line))
-            except ValueError:
-                data.append(line)
-        else:
-            try:
-                data.append(list(map(int, line.split())))
-            except ValueError:
-                data.append(line.split())
-        i += 1
-    file.close()
-    return data
+def get_calling_file_path():
+    file_path = stack()[2].filename
+    return os.path.abspath(file_path)
 
 
-def print_end_test(time, amount_data):
-    print('Время работы: %s секунд' % time)
-    print("Память:", amount_data, "МБ")
+def read(filename: str = r'..\textf\input', type_convert: type = int):
+    """
+    Чтение файла построчно с преобразованием типов
+    :param filename: имя файла, с которого нужно прочитать данные
+    :param type_convert: все данные в файле будут конвертироваться в списки с данными этого типа
+    :return: генератор списков строк
+    """
+    filename = fr'{os.path.dirname(get_calling_file_path())}\{filename}'
+
+    with open(filename) as file:
+        while True:
+            line = file.readline().split()
+            if not line: break
+
+            if type_convert != str:
+                line = list(map(type_convert, line))
+
+            yield line
 
 
-def print_task_data(tasknum, inp, output):
-    print(f"task {tasknum}")
-    print("input: " + str(inp))
-    print("output: " + str(output) + "\n")
+def write(*values, sep: str = " ", end: str = "\n", filename: str = r'..\textf\output',
+          to_end: bool = False) -> None:
+    """
+    Запись в файл списка values
+    :param values: данные, которые необходимо записать
+    :param sep: разделитель данных
+    :param end: строка, которая будет записана в конец данных
+    :param filename: имя файла, куда будут записываться данные
+    :param to_end: определяет, будет ли перезаписан файл или данные будут записаны в конец файла
+    """
+    filename = fr'{os.path.dirname(get_calling_file_path())}\{filename}'
+
+    mode = 'w'
+    if to_end:
+        mode = 'a'
+
+    with open(filename, mode) as file:
+        print(*values, sep=sep, end=end, file=file)
+
+
+def time_data(func) -> float:
+    """
+    Запускает функцию func и возвращает время ее выполнения в секундах
+    :param func: функция, время которой нужно проверить
+    :return: время выполнения func
+    """
+    time_start = time.perf_counter()
+    func()
+    return time.perf_counter() - time_start
+
+
+def memory_data(func) -> Tuple[float, float]:
+    """
+    Запускает функцию func и возвращает данные о памяти, занятой при ее выполнении, в Mб
+    :param func: функция, память которой нужно проверить
+    :return: занятая и пиковая память соотв.
+    """
+    tracemalloc.start()
+    func()
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    return current / 1024 ** 2, peak / 1024 ** 2
+
+
+RESET = '\033[0m'  # Сброс цвета
+RED = '\033[31m'  # Красный
+GREEN = '\033[32m'  # Зеленый
+YELLOW = '\033[33m'  # Желтый
+BLUE = '\033[34m'  # Синий
+MAGENTA = '\033[35m'  # Фиолетовый
+CYAN = '\033[36m'  # Голубой
+
+
+def run_tasks(working_dir, root_dir):
+    for file in os.listdir(working_dir):
+        if file.startswith('task'):
+            src_dir = os.path.join(working_dir, file, 'src')
+            for root, _, files in os.walk(src_dir):
+                for fl in files:
+                    run_path = os.path.relpath(os.path.join(root, fl), root_dir)
+                    if fl.endswith('.py'):
+                        print('—————————————————————————————————————————————')
+                        print(f'{MAGENTA}RUNNING {run_path}{RESET}')
+                        subprocess.run(['python', run_path], cwd=root_dir)
+
+            textf_dir = os.path.join(working_dir, file, 'textf')
+            if not os.path.exists(textf_dir): continue
+            input_file = os.path.join(textf_dir, 'input')
+            if not os.path.exists(input_file): continue
+            print('---------------------------------------------')
+            print(f'{GREEN}ВХОДНЫЕ ДАННЫЕ{RESET}')
+            for line in read(os.path.relpath(input_file, root_dir), type_convert=str):
+                print(*line)
+
+            print('---------------------------------------------')
+            print(f'{GREEN}ВЫХОДНЫЕ ДАННЫЕ{RESET}')
+            output_file = os.path.join(working_dir, file, 'textf', 'output')
+            if not os.path.exists(output_file): continue
+            for line in read(os.path.relpath(output_file, root_dir), type_convert=str):
+                print(*line)

@@ -1,3 +1,6 @@
+from utils import read, write
+
+
 def selection_sort(arr):
     for i in range(len(arr)):
         min_index = i
@@ -8,12 +11,12 @@ def selection_sort(arr):
         arr[i], arr[min_index] = arr[min_index], arr[i]
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task5/tests/input', 'r') as f:
-    n = int(f.readline())
-    arr = list(map(int, f.readline().split()))
+def main():
+    array, = read()
+    selection_sort(array)
+    write(*array)
 
-selection_sort(arr)
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab1/task5/tests/output', 'w') as f:
-    f.write(' '.join(map(str, arr)))
+if __name__ == "__main__":
+    main()
 

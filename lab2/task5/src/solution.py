@@ -22,7 +22,7 @@ def majority_element(arr):
         return None
 
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task5/tests/input', 'r') as f:
+with open('/lab2/task5/textf/input', 'r') as f:
     n = int(f.readline())
     arr = list(map(int, f.readline().split()))
 
@@ -32,5 +32,5 @@ if majority_element(arr) is not None:
 else:
     ans = 0
 
-with open('C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab2/task5/tests/output', 'w') as f:
+with open('/lab2/task5/textf/output', 'w') as f:
     f.write(str(ans))

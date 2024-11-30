@@ -7,11 +7,11 @@ def fib(n):
     return b % 10
 
 
-with open("C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab0/task3/tests/input", "r") as input_file:
+with open("/lab0/task3/textf/input", "r") as input_file:
     data = input_file.readline()
 n = int(data)
 
 result = fib(n)
 
-with open("C:/Users/Михаил/PycharmProjects/algorithm_and_data_structures/lab0/task3/tests/output", "w") as output_file:
+with open("/lab0/task3/textf/output", "w") as output_file:
     output_file.write(str(result))
