@@ -1,5 +1,3 @@
-import pytest
-
 from random import randint
 from utils import time_data, memory_data
 from lab3.task3.src.solution import naive_scarecrow_sort, fast_scarecrow_sort_check, main

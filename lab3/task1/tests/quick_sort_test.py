@@ -1,5 +1,3 @@
-import pytest
-
 from random import randint
 from utils import time_data, memory_data
 from lab3.task1.src.solution import quick_sort, main

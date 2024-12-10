@@ -1,5 +1,3 @@
-import pytest
-
 from random import randint
 from utils import time_data, memory_data
 from lab3.task4.src.solution import points_in_section, points_in_section_naive, main
