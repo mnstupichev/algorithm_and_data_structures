@@ -12,12 +12,12 @@ def fib(n):
 
 start_time = perf_counter()
 
-with open("/lab0/task4/textf/input", "r") as input_file:
+with open("/lab0/task2/textf/input", "r") as input_file:
     data = input_file.readline()
 n = int(data)
 
 result = fib(n)
 
-with open("/lab0/task4/textf/output", "w") as output_file:
+with open("/lab0/task2/textf/output", "w") as output_file:
     output_file.write(str(result) + "\n")
     output_file.write(str(perf_counter() - start_time))
