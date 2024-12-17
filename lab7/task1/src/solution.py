@@ -12,16 +12,21 @@ def dp_change(money: int, coins: List[int]) -> int:
                 if cur_val >= coin:
                     min_amount_coins_for_change[cur_val] = min(
                         min_amount_coins_for_change[cur_val],
-                        min_amount_coins_for_change[cur_val - coin] + 1
-                    )
-    return min_amount_coins_for_change[money]
+                        min_amount_coins_for_change[cur_val - coin] + 1)
+    ans = min_amount_coins_for_change[money]
+    if ans == 10 ** 9:
+        return -1
+    return ans
 
 
 def main():
     money, *coins, = read()
     money, coins = money[0], coins[0]
     ans = dp_change(money, coins)
-    write(ans)
+    if ans == -1:
+        write("IMPOSSIBLE")
+    else:
+        write(ans)
 
 
 if __name__ == "__main__":
