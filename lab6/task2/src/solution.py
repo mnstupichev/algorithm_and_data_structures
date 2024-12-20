@@ -3,7 +3,7 @@ from utils import read, write
 
 
 class PhoneBook:
-    def __init__(self, capacity: int = 10 ** 6, hash_func: Callable = hash):
+    def __init__(self, capacity: int = 10 ** 5, hash_func: Callable = hash):
         self.capacity: int = capacity
         self.hash_func: Callable = hash_func
         self.buckets: List[List[Tuple[int, str]]] = [[] for _ in range(self.capacity)]

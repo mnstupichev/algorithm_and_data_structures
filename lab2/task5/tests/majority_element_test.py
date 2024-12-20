@@ -56,7 +56,7 @@ def test_random():
     # when
     majority = majority_element(array)
     elements = set(array)
-    majority_true = None
+    majority_true = -10**9
     for el in elements:
         if array.count(el) > len(array) / 2:
             majority_true = el

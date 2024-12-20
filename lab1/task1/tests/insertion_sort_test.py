@@ -32,8 +32,8 @@ def test_random_order():
     array = [randint(-10 ** 8, 10 ** 8) for _ in range(randint(0, 10 ** 3))]
 
     # when
-    array = insertion_sort(array)
     sorted_array = sorted(array)
+    array = insertion_sort(array)
 
     # then
     assert array == sorted_array

@@ -22,7 +22,7 @@ def quick_sort(array: List, start: int = 0, end: int = -1) -> List[int]:
     if end == -1:
         end = len(array)
 
-    if end - start <= 1:
+    if end - start < 1:
         return []
 
     end_less_part, end_equal_part = partition(array, start, end)

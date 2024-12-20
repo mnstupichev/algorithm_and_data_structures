@@ -12,7 +12,7 @@ def insertion_sort(array: List[int]) -> List[int]:
             j -= 1
         array[j + 1] = key
 
-        return array
+    return array
 
 
 def main():
