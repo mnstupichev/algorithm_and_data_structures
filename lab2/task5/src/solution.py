@@ -1,9 +1,9 @@
 from utils import read, write
+from typing import List
 
-
-def majority_element(arr):
+def majority_element(arr: List[int]) -> int:
     if not arr:
-        return None
+        return -10**9
     if len(arr) == 1:
         return arr[0]
 
@@ -22,13 +22,13 @@ def majority_element(arr):
     elif count_right > len(arr) // 2:
         return right_majority
     else:
-        return None
+        return -10**9
 
 
 def main():
     array, = read()
     majority = majority_element(array)
-    if majority is not None:
+    if majority != -10**9:
         majority = 1
     else:
         majority = 0

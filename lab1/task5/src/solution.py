@@ -1,19 +1,22 @@
 from utils import read, write
+from typing import List
 
 
-def selection_sort(arr):
-    for i in range(len(arr)):
+def selection_sort(array: List[int]) -> List[int]:
+    for i in range(len(array)):
         min_index = i
-        for j in range(i + 1, len(arr)):
-            if arr[j] < arr[min_index]:
+        for j in range(i + 1, len(array)):
+            if array[j] < array[min_index]:
                 min_index = j
 
-        arr[i], arr[min_index] = arr[min_index], arr[i]
+        array[i], array[min_index] = array[min_index], array[i]
 
+
+    return array
 
 def main():
     array, = read()
-    selection_sort(array)
+    array = selection_sort(array)
     write(*array)
 
 

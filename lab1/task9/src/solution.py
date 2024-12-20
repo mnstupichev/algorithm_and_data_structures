@@ -1,20 +1,21 @@
 from utils import read, write
+from typing import List
 
 
-def binary_add(A, B):
-    n = len(A)
-    C = [0] * (n + 1)
+def binary_add(first_num: List[int], second_num:List[int]) -> List[int]:
+    n = len(first_num)
+    sum_result = [0] * (n + 1)
     extra = 0
 
     for i in range(n - 1, -1, -1):
-        total = A[i] + B[i] + extra
-        C[i + 1] = total % 2
+        total = first_num[i] + second_num[i] + extra
+        sum_result[i + 1] = total % 2
         extra = total // 2
 
-    C[0] = extra
-    while len(C) != 1 and C[0] == 0:
-        C = C[1:]
-    return C
+    sum_result[0] = extra
+    while len(sum_result) != 1 and sum_result[0] == 0:
+        sum_result = sum_result[1:]
+    return sum_result
 
 
 def main():

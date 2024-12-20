@@ -10,7 +10,7 @@ def test_already_sorted():
     array = [1, 2, 3, 4, 5]
 
     # when
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == [1, 2, 3, 4, 5]
@@ -21,7 +21,7 @@ def test_reversed_array():
     array = [5, 4, 3, 2, 1]
 
     # when
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == [1, 2, 3, 4, 5]
@@ -33,7 +33,7 @@ def test_random_order():
 
     # when
     sorted_array = sorted(array)
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == sorted_array
@@ -44,7 +44,7 @@ def test_duplicate_elements():
     array = [0, 0, 0, 0, 0]
 
     # when
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == [0, 0, 0, 0, 0]
@@ -55,7 +55,7 @@ def test_empty_list():
     array = []
 
     # when
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == []
@@ -66,7 +66,7 @@ def test_one_element():
     array = [0]
 
     # when
-    bubble_sort(array)
+    array = bubble_sort(array)
 
     # then
     assert array == [0]

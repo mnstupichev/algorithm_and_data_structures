@@ -13,7 +13,7 @@ def test_empty():
     majority = majority_element(array)
 
     # then
-    assert majority is None
+    assert majority == -10**9
 
 
 def test_one_element():
@@ -46,7 +46,7 @@ def test_from_task_2():
     majority = majority_element(array)
 
     # then
-    assert majority is None
+    assert majority == -10**9
 
 
 def test_random():

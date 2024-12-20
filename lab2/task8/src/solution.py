@@ -1,7 +1,8 @@
 from utils import read, write
+from typing import List
 
 
-def multiply_polynomials(a, b):
+def multiply_polynomials(a: List[int], b: List[int]) -> List[int]:
     if len(a) == 0:
         return []
     n = len(a)

@@ -8,7 +8,7 @@ def test_already_sorted():
     array = [1, 2, 3, 4, 5]
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
 
     # then
     assert array == [1, 2, 3, 4, 5]
@@ -19,7 +19,7 @@ def test_reversed_array():
     array = [5, 4, 3, 2, 1]
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
 
     # then
     assert array == [1, 2, 3, 4, 5]
@@ -30,7 +30,7 @@ def test_random_order():
     array = [randint(-10 ** 8, 10 ** 8) for _ in range(randint(0, 10 ** 3))]
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
     sorted_array = sorted(array)
 
     # then
@@ -42,7 +42,7 @@ def test_duplicate_elements():
     array = [0, 0, 0, 0, 0]
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
 
     # then
     assert array == [0, 0, 0, 0, 0]
@@ -53,7 +53,7 @@ def test_empty_list():
     array = []
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
 
     # then
     assert array == []
@@ -64,7 +64,7 @@ def test_one_element():
     array = [0]
 
     # when
-    quick_sort(array)
+    array = quick_sort(array)
 
     # then
     assert array == [0]

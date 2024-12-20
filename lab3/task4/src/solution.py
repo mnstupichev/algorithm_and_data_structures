@@ -5,7 +5,7 @@ from utils import read, write
 
 
 
-def points_in_section(sections: List[Tuple[int, int]], points: List[int]):
+def points_in_section(sections: List[Tuple[int, int]], points: List[int]) -> List[int]:
     main_array = []
 
     for section in sections:

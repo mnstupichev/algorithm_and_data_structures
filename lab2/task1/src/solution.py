@@ -1,7 +1,8 @@
 from utils import read, write
+from typing import List
 
 
-def merge_sort(arr):
+def merge_sort(arr: List[int]) -> List[int]:
     if len(arr) <= 1:
         return arr
 
@@ -15,7 +16,7 @@ def merge_sort(arr):
     return merge(left_half, right_half)
 
 
-def merge(left, right):
+def merge(left: List[int], right: List[int]) -> List[int]:
     merged = []
     i = j = 0
 

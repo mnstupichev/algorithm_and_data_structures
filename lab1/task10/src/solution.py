@@ -1,7 +1,7 @@
 from utils import read, write
 
 
-def get_pallindrom(string):
+def get_pallindrom(string: str) -> str:
     letters = set([let for let in string])
     count_letters = dict()
     for letter in letters:

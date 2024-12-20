@@ -2,7 +2,7 @@ from typing import List, Tuple
 from utils import read, write
 
 
-def heapify(array: List[int], array_len: int, cur_ind: int) -> None:
+def heapify(array: List[int], array_len: int, cur_ind: int) -> List[int]:
     largest = cur_ind
     left = 2 * cur_ind + 1
     right = 2 * cur_ind + 2
@@ -17,6 +17,8 @@ def heapify(array: List[int], array_len: int, cur_ind: int) -> None:
         array[cur_ind], array[largest] = array[largest], array[cur_ind]
 
         heapify(array, array_len, largest)
+
+    return array
 
 
 def min_heapify(array: List[int], array_len: int, cur_ind: int, swaps: List[Tuple[int, int]]) -> List[Tuple[int, int]]:

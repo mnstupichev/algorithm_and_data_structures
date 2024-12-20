@@ -18,21 +18,23 @@ def partition(array: List, start: int, end: int) -> Tuple[int, int]:
     return end_less_part, end_equal_part
 
 
-def quick_sort(array: List, start: int = 0, end: int = -1) -> None:
+def quick_sort(array: List, start: int = 0, end: int = -1) -> List[int]:
     if end == -1:
         end = len(array)
 
     if end - start <= 1:
-        return
+        return []
 
     end_less_part, end_equal_part = partition(array, start, end)
     quick_sort(array, start, end_less_part)
     quick_sort(array, end_equal_part, end)
 
+    return array
+
 
 def main():
     array, = read()
-    quick_sort(array)
+    array = quick_sort(array)
     write(*array)
 
 
